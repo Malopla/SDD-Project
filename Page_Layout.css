@@ -19,3 +19,20 @@ html, body
 	height: 3em;
 	background-color: #03426A;
 }
+
+.button
+{
+	text-decoration: none;
+	font-weight: bold;
+	color: white;
+	border-style: solid;
+	background-color: #3EC7F1;
+	border-color: #3E97D1 #03426A #03426A #3E97D1;
+	padding: 2px 6px 2px 6px;
+	margin: 2px;
+}
+
+div#button
+{
+	margin: 10px;
+}
