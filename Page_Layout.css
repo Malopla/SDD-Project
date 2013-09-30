@@ -1,0 +1,21 @@
+html, body
+{
+	height: 100%;
+}
+
+#TitleBanner
+{
+	background-color: #3E97D1;
+	position: relative;
+	height: 100px;
+	width: 100%;
+	font-size: 90px;
+	color: white;
+	padding-left: 5px;
+}
+
+#footer
+{
+	height: 3em;
+	background-color: #03426A;
+}
