@@ -34,6 +34,12 @@ html, body
 	margin: 2px;
 }
 
+.button:active
+{
+	background-color: #3EB7F1;
+	border-color: #03426A #3E97D1 #3E97D1 #03426A;
+}
+
 div#button
 {
 	margin: 15px;
