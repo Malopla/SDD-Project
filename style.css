@@ -1,0 +1,633 @@
+/*
+	Font Family for Feed
+*/
+#all,#lost,#found{
+	font-family:Britannic Bold;
+}
+
+
+/*
+	Login Area
+*/
+
+#login{
+	font-size:70%;
+	position:absolute;
+	-moz-box-shadow: 3px 3px 3px 3px #000000;
+	-webkit-box-shadow: 3px 3px 3px 3px #000000;
+	box-shadow: 3px 3px 3px 3px #000000;
+	width: 170px;
+	min-height: 500px;
+	float: left;
+	/*  border: 1px solid blue;*/
+	background-color: #D8D8D8;
+	border: 2px solid black;
+	padding: 10px;
+}
+
+/*
+	Font for profile area info (user name and info printed area)
+*/
+
+#profileInfoArea{
+  font-size: 130%;
+}
+
+/*
+	Formatting for the feed
+*/
+#threeDiv{
+	margin-top:2%;
+	float:left;
+	line-height:normal;
+	margin-left:25%;
+	padding-right:10px;
+	text-align:left;
+}
+
+/*
+	Formatting for any links in the div
+*/
+#threeDiv a{
+	color:#333;
+	float:left;
+	font-family:Britannic Bold;
+	font-size:24px;
+	padding:5px 15px 4px 6px;
+	text-align:center;
+	text-decoration:none;
+	width:100px;
+}#threeDiv a:hover,#threeDiv .now
+{
+	background-color:#b82e2e;
+	border-top-left-radius:15px 15px;
+	border-top-right-radius:15px 15px;
+	color:#000;
+}
+
+/*
+	Imageless CSS Submit button Generated with
+	cssbuttongenerator.com
+*/
+.submitButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+	background-color:#f24537;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #d02718;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #810e05;
+}.submitButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+	background-color:#c62d1f;
+}.submitButton:active {
+	position:relative;
+	top:1px;
+}
+
+/*	
+	Delete Button is a modified submitButton
+		Values repeated in case further styling desired
+*/
+.deleteButton {
+	margin-left:2%;
+	-moz-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	box-shadow:inset 0px 1px 0px 0px #f29c93;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100) );
+	background:-moz-linear-gradient( center top, #fe1a00 5%, #ce0100 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100');
+	background-color:#fe1a00;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #d83526;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:11px;
+	font-weight:bold;
+	padding:3px 7px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #b23e35;
+}.deleteButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00) );
+	background:-moz-linear-gradient( center top, #ce0100 5%, #fe1a00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00');
+	background-color:#ce0100;
+}.deleteButton:active {
+	position:relative;
+	top:1px;
+}
+
+/*
+	Main Content Area
+*/
+#content{	
+	background-color:#DDDDDD;
+	min-height:600px;
+	overflow:auto;
+	padding-bottom:50px;
+}
+/*
+	Footer CSS
+*/
+#footer
+{
+	bottom:0;
+	color:#FFF;
+	font-family:Franklin Gothic Medium;
+	font-size:15px;
+	letter-spacing:1px;
+	margin-bottom:5px;
+	margin-top:20px;
+	position:relative;
+	text-align:center;
+	text-shadow:#000 0 -1px 0;
+}
+
+/*
+	Options for lost/found in submit form
+*/
+#opType{
+	float:left;
+	font-family:Britannic Bold;
+	font-size:24px;
+	
+
+}
+/*
+	Logout Button
+*/
+#out{
+	margin-top:7%;
+}
+
+/*
+	Location Page option icon
+*/
+#locationOp{
+	margin-top:2%;
+	font-size:50%;
+	width:100%;
+}
+/*
+	Location page bar 
+*/
+#locationBar{
+	font-family:Century Gothic;
+	font-size:20px;
+	height:40px;
+	width:120px;
+
+	font-size:120%;
+	width:40%;
+	margin-left:-60%;
+}
+
+/*
+	location search icon
+*/
+#locSearch{
+	margin-top:3%;
+
+}
+/*
+	Message Area
+*/
+#opMsg{
+	background:#FFFFFF;
+	border:1px solid red;
+	font-family:Century Gothic;
+	font-size:12px;
+	height:80px;
+	margin-top:25px;
+	width:150px;
+}
+
+/*
+	Formatting for names etc in form
+*/
+#form #opName,#form #opEmail{
+	float:left;
+	margin-left:48px;
+}
+
+#form label
+{
+	padding:2px;
+}
+
+/*
+	Logo
+*/
+#logo
+{
+	height:110px;
+	margin-top:30px;
+	padding-top:20px;
+	width:187px;
+}
+
+/*
+	Menu Bar Formatting
+*/
+#menu
+{
+	margin-left:170px;
+}
+
+/*
+	Menu Bar Formatting
+*/
+#menuBar
+{
+	position:absolute;
+	top:70px;
+}
+
+#loginBar
+{
+	float: right;
+	clear: right;
+	margin-top: -185px;
+
+}
+/* Inline span elements */
+span{ 
+    display: inline-block; 
+    position: relative;
+    top: -1em;
+    text-align:center;
+} 
+
+/* Login fields */
+span select input {  
+    display: block;  
+    /*position: relative;  */
+    top: -3em;  
+}  
+
+/* Login labels */
+span label {  
+    display: block;  
+    position: relative;  
+    top:2.7em; 
+    text-align: center; 
+} 
+
+/*
+	Depricated
+*/
+#post{
+	float:right;
+	margin-right:48px;
+	position:relative;
+	top:10px;
+}
+
+/*
+	Search Form
+*/
+#searchForm input#button
+{
+	font-family:Century Gothic;
+	font-size:20px;
+	height:31px;
+	width:105px;
+}#searchForm input#search
+{
+	font-family:Century Gothic;
+	font-size:20px;
+	height:31px;
+	width:172px;
+}
+
+/*
+	Search Results Div and associated formatting
+*/
+#searchresults
+{
+	margin-top:2%;
+	font-family:Britannic Bold;
+	font-size:18px;
+	margin-left:47px;
+	text-align:left;
+}#searchresultsIndex
+{
+	margin-top:2%;
+	font-family:Britannic Bold;
+	font-size:18px;
+	margin-left:25%;
+	text-align:left;
+}
+
+/*
+	Content Area
+*/
+#wrapper{
+	margin:auto;
+	width:1000px;
+}
+
+
+/*
+	Various Formatting (Used primarily by JS file)
+*/
+.area1
+{
+	margin-left:18px;
+	width:822px;
+}
+
+.area2
+{
+	margin-left:8px;
+	width:822px;
+}
+
+.clear
+{
+	clear:both;
+}
+
+
+/*
+	Class hiding
+*/
+.invisible{
+	height:0;
+	overflow:hidden;
+	visibility:hidden;
+}
+
+/*
+	Lost or found tag floating
+*/
+.lostorfound{
+	float:right;
+}
+
+/*
+	Message formatting
+*/
+.message{
+	float:left;
+	padding-top:10px;
+	width:720px;
+}
+
+
+/*
+	Name/Info floating/formatting
+*/
+.name{
+	color:#b82e2e;
+	float:left;
+	padding-top:10px;
+	width:300px;
+}
+
+
+/*
+	Search Area Format
+*/
+.search{
+	outline:none;
+}
+
+/*
+	Data Formatting (used mostly on spans)
+*/
+.data{
+	font-size:14px;
+	font-weight:normal;
+	color:black;
+}
+
+
+/*
+	SearchButton Formatting (for the icon)
+*/
+.searchButton
+{
+	border: none; 
+	width:33px; 
+	height:33px;
+	background: url('images/search.png');
+	left:141px;
+	position:absolute;
+	top:2.5px;
+}
+
+
+/*
+	Search area formatting
+*/
+.searchSite
+{
+	position:absolute;
+	top:100px;
+}
+
+
+/*
+	Time formatting
+*/
+.time
+{
+	color:#b82e2e;
+}
+
+/*
+	Visibility toggling -> used in JS file
+*/
+.visible
+{
+	visibility:visible;
+}
+
+/*
+	Used in JS file
+*/
+.unchecked{
+	background:url('images/check_off.png') no-repeat;
+	height:18px;
+	width:18px;
+}
+
+/*
+	Used in JS file
+*/
+.checked
+{
+	background:url('images/check_on.png') no-repeat;
+	height:18px;
+	width:18px;
+}
+
+
+/*
+	Font import
+*/
+@font-face
+{
+	font-family:Chunkfive;
+	src:url('fonts/Chunk.ttf');
+}
+
+/*
+	Font import
+*/
+@font-face
+{
+	font-family:Britannic Bold;
+	src:url('fonts/BRITANIC.TTF');
+}
+
+
+/*
+	Font import
+*/
+@font-face
+{
+	font-family:Century Gothic;
+	src:url('fonts/GOTHIC.TTF');
+}
+
+
+/*
+	Body Formatting 
+*/
+body{
+	/*
+		Gradient w/ cross browser compatibility
+		Created with colorzilla.com
+	*/
+	
+	
+	background: #131313; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTMxMzEzIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMSUiIHN0b3AtY29sb3I9IiMyYjJiMmIiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI0NiUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3NSUiIHN0b3AtY29sb3I9IiM2NjY2NjYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4OCUiIHN0b3AtY29sb3I9IiM1OTU5NTkiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGM0YzRjIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(-45deg,  #131313 0%, #2b2b2b 1%, #474747 46%, #666666 75%, #595959 88%, #4c4c4c 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#131313), color-stop(1%,#2b2b2b), color-stop(46%,#474747), color-stop(75%,#666666), color-stop(88%,#595959), color-stop(100%,#4c4c4c)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  #131313 0%,#2b2b2b 1%,#474747 46%,#666666 75%,#595959 88%,#4c4c4c 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  #131313 0%,#2b2b2b 1%,#474747 46%,#666666 75%,#595959 88%,#4c4c4c 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  #131313 0%,#2b2b2b 1%,#474747 46%,#666666 75%,#595959 88%,#4c4c4c 100%); /* IE10+ */
+	background: linear-gradient(135deg,  #131313 0%,#2b2b2b 1%,#474747 46%,#666666 75%,#595959 88%,#4c4c4c 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#131313', endColorstr='#4c4c4c',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+
+	font-family:ChunkFive, Berlin Sans FB Demi, Arial;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
+
+/*
+	textarea Formatting
+*/
+textarea{
+	outline:none;
+	overflow:auto;
+	resize:none;
+}
+
+/*
+	input formatting
+*/
+input{
+	outline:none;
+}
+
+/*
+	Further Menu Bar Formatting
+*/
+ul#menu
+{
+	height:50px;
+	list-style:none;
+	width:800px;
+}
+
+/*
+	Menu Bar Functionality
+*/
+ul#menu li
+{
+	display:inline;
+}ul#menu li a
+{
+	float:left;
+	height:50px;
+	text-decoration:none;
+	text-indent:-9999px;
+}ul#menu li a span
+{
+	display:block;
+	float:left;
+}ul#menu li#menu-1 a
+{
+	background:url(images/menu_bar.jpg) no-repeat 0 0;
+	width:125px;
+}ul#menu li#menu-1 a.current
+{
+	background-position:0 -100px;
+}ul#menu li#menu-1 a:active,ul#menu li#menu-1 a:hover
+{
+	background-position:0 -50px;
+}ul#menu li#menu-2 a
+{
+	background:url(images/menu_bar.jpg) no-repeat -125px 0;
+	width:189px;
+}ul#menu li#menu-2 a.current
+{
+	background-position:-125px -100px;
+}ul#menu li#menu-2 a:active,ul#menu li#menu-2 a:hover
+{
+	background-position:-125px -50px;
+}ul#menu li#menu-3 a
+{
+	background:url(images/menu_bar.jpg) no-repeat -314px 0;
+	width:133px;
+}ul#menu li#menu-3 a.current
+{
+	background-position:-314px -100px;
+}ul#menu li#menu-3 a:active,ul#menu li#menu-3 a:hover
+{
+	background-position:-314px -50px;
+}ul#menu li#menu-4 a
+{
+	background:url(images/menu_bar.jpg) no-repeat -447px 0;
+	width:156px;
+}ul#menu li#menu-4 a.current
+{
+	background-position:-447px -100px;
+}ul#menu li#menu-4 a:active,ul#menu li#menu-4 a:hover
+{
+	background-position:-447px -50px;
+}ul#menu li#menu-5 a
+{
+	background:url(images/menu_bar.jpg) no-repeat -603px 0;
+	width:188px;
+}ul#menu li#menu-5 a.current
+{
+	background-position:-603px -100px;
+}ul#menu li#menu-5 a:active,ul#menu li#menu-5 a:hover
+{
+	background-position:-603px -50px;
+}
