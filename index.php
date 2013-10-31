@@ -209,9 +209,6 @@
           </form>
         </div>          
       </div>
-	  
-      <br/>
-      <br/>
 	  <div id="loginBar">       		
 		<!-- If Logged in -->
 		<?php if (isset($_SESSION['username'])){ ?>
