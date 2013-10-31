@@ -326,7 +326,8 @@
 */
 #menu
 {
-	margin-left:170px;
+	margin-left:210px;
+	padding:0px;
 }
 
 /*
@@ -621,74 +622,54 @@ ul#menu
 	height:50px;
 	list-style:none;
 	width:800px;
+	background-color:#DDDDDD;
+	background: linear-gradient(top,  #DDDDDD,  #7A7A7A);
+	background: -ms-linear-gradient(top,  #DDDDDD,  #7A7A7A);
+	background: -webkit-gradient(linear, left top, left bottom, from(#DDDDDD), to(#7A7A7A));
+	background: -moz-linear-gradient(top,  #DDDDDD,  #7A7A7A);
 }
 
 /*
 	Menu Bar Functionality
 */
+
 ul#menu li
 {
 	display:inline;
-}ul#menu li a
-{
 	float:left;
-	height:50px;
+	height:100%;
+}
+ul#menu li a{
+	color:#333;
+	float:left;
+	font-family:Britannic Bold;
+	font-size:30px;
+	font-weight:bold;
+	font-style:normal;
+	height:32px;
+	line-height:32px;
+	padding: 7.5px 30px 7.5px 30px;
+	text-align:center;
 	text-decoration:none;
-	text-indent:-9999px;
-}ul#menu li a span
+}
+ul#menu li a.current
 {
-	display:block;
-	float:left;
-}ul#menu li#menu-1 a
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f6b33d), color-stop(1, #d29105) );
+	background:-moz-linear-gradient( center top, #f6b33d 5%, #d29105 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6b33d', endColorstr='#d29105');
+	background-color:#f6b33d;
+	border:1px solid #eda933;
+}
+
+ul#menu li a:hover
 {
-	background:url(images/menu_bar.jpg) no-repeat 0 0;
-	width:125px;
-}ul#menu li#menu-1 a.current
-{
-	background-position:0 -100px;
-}ul#menu li#menu-1 a:active,ul#menu li#menu-1 a:hover
-{
-	background-position:0 -50px;
-}ul#menu li#menu-2 a
-{
-	background:url(images/menu_bar.jpg) no-repeat -125px 0;
-	width:189px;
-}ul#menu li#menu-2 a.current
-{
-	background-position:-125px -100px;
-}ul#menu li#menu-2 a:active,ul#menu li#menu-2 a:hover
-{
-	background-position:-125px -50px;
-}ul#menu li#menu-3 a
-{
-	background:url(images/menu_bar.jpg) no-repeat -314px 0;
-	width:133px;
-}ul#menu li#menu-3 a.current
-{
-	background-position:-314px -100px;
-}ul#menu li#menu-3 a:active,ul#menu li#menu-3 a:hover
-{
-	background-position:-314px -50px;
-}ul#menu li#menu-4 a
-{
-	background:url(images/menu_bar.jpg) no-repeat -447px 0;
-	width:156px;
-}ul#menu li#menu-4 a.current
-{
-	background-position:-447px -100px;
-}ul#menu li#menu-4 a:active,ul#menu li#menu-4 a:hover
-{
-	background-position:-447px -50px;
-}ul#menu li#menu-5 a
-{
-	background:url(images/menu_bar.jpg) no-repeat -603px 0;
-	width:188px;
-}ul#menu li#menu-5 a.current
-{
-	background-position:-603px -100px;
-}ul#menu li#menu-5 a:active,ul#menu li#menu-5 a:hover
-{
-	background-position:-603px -50px;
+	background:#DDDDDD;
+	color:#f6b33d;
+	background-color:#DDDDDD;
+	background: linear-gradient(top,  #DDDDDD,  #7A7A7A);
+	background: -ms-linear-gradient(top,  #DDDDDD,  #7A7A7A);
+	background: -webkit-gradient(linear, left top, left bottom, from(#DDDDDD), to(#7A7A7A));
+	background: -moz-linear-gradient(top,  #DDDDDD,  #7A7A7A);
 }
 
 #login_form
