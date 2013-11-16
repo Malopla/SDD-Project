@@ -98,9 +98,9 @@
 ?>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--    <meta name="description" content="">
     <meta name="author" content="">-->
@@ -119,214 +119,205 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
-
+<body>
     <!-- Wrap all page content here -->
     <div id="wrap">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="./">Online Office Hours</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="./profile.php">Profile</a></li>
+						<li><a href="./by_subject.php">By Subject</a></li>
+						<li><a href="./by_user.php">By User</a></li>
+					</ul>
+					<?php
+					if( isset($_SESSION['username']))
+					{
+						$temp = file_get_contents('./resources/html/logout_form.html');
+						echo str_replace("username", $_SESSION['username'], $temp );
 
-      <!-- Fixed navbar -->
-                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                        <div class="container">
-                                <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                                <span class="sr-only">Toggle navigation</span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                        </button>
-                                        <a class="navbar-brand" href="./">Online Office Hours</a>
-                                </div>
-                                <div class="navbar-collapse collapse">
-                                        <ul class="nav navbar-nav">
-                                                <li class="active"><a href="./profile.php">Profile</a></li>
-                                                <li><a href="./by_subject.php">By Subject</a></li>
-                                                <li><a href="./by_user.php">By User</a></li>
-                                        </ul>
-										<?php if( !isset($_SESSION['username'])) { ?>
-                                        <form class="navbar-form navbar-right" method="post" action="profile.php">
-                                                <div class="form-group">
-                                                        <input type="text" placeholder="Username" class="form-control" name="username">
-                                                </div>
-                                                <div class="form-group">
-                                                        <input type="password" placeholder="Password" class="form-control" name="pass">
-                                                </div>
-                                                <button type="submit" class="btn btn-success" name="login" value="Login">Sign in</button>
-                                                <a href="">register</a>
-                                        </form>
-										<?php } 
-										else { ?>
-										
-											Hello, <?php echo $_SESSION['username']; ?>
-										
-										<?php } ?>
-				
-                                </div><!--/.nav-collapse -->
-                        </div>
-                </div>
-
-                <!-- Begin page content -->
-                <div class="container">
-						<br>
-                        <div class="page-header">
-                                <h1>Profile</h1>
-                        </div>
-<div id="profileDiv">
-			<?php if (isset($_SESSION['username'])){ 
-			$username=$_SESSION['username']; ?>
-			<?php if(isset($_POST['editprof'])) {
-				$profile=$service->getProfile(); ?>
-			
-				<h1 id="title">Update Your Profile</h1>
-				<?php if (isset($msg)) echo "<p>$msg</p>" ?>
-					<form class="form-horizontal" action="profile.php" method="post">
-						<label>First Name:</label>
-						<input type="text" id="firstname" class = "form-control" name="firstname" value="<?php echo htmlentities($profile['firstname']) ?>"></input><br/>
-
-						<label>Last Name:</label>
-						<input type="text" class = "form-control" id="lastname" name="lastname" value="<?php echo htmlentities($profile['lastname']) ?>"></input><br/>
-
-						<label>*Email</label> 
-						<input type="text" class = "form-control"  id="email" name="email" value="<?php echo htmlentities($profile['email']) ?>"></input><br/>
-
-						<label>Phone Number</label> 
-						<input type="text" class = "form-control"  id="phone" name="phone" value="<?php echo htmlentities($profile['phone']) ?>"></input><br/>
-
-						<label>Bio</label> 
-						<textarea type="text" class = "form-control"  rows="5" id="bio" name="bio" value="<?php echo htmlentities($profile['bio']) ?>"></textarea><br/>
-						
-						<label>Student Price</label> 
-						<div class="input-group">
-  							<span class="input-group-addon">$</span>
-							<input type="text" class = "form-control"  id="sprice" name="sprice" value="<?php echo htmlentities($profile['studentprice']) ?>">
-							</input>
-						</div>
-
-						<label>Tutor Price</label>
-						<div class="input-group">
-  							<span class="input-group-addon">$</span>
-							<input type="text" class = "form-control"  id="tprice" name="sprice" value="<?php echo htmlentities($profile['tutorprice']) ?>">
-							</input>
-						</div> 
-
-						<p>*Email is required. All other fields are optional.</p>
-						<input  type="hidden" name="prid" value="<?php echo htmlentities($profile['prid']) ?>">
-						<input type="submit" class = "btn btn-primary" value="Update" name="update"/>
-					</form>	
-			<?php } else { 
-				$profile=$service->getProfile();?>
-				<div id="profileInfoArea">
-					First Name: <?php echo htmlentities($profile['firstname']) ?><br/>
-					Last Name: <?php echo htmlentities($profile['lastname']) ?><br/>
-					Email: <?php echo htmlentities($profile['email']) ?><br/>
-					Phone: <?php echo htmlentities($profile['phone']) ?><br/>
-					Bio: <?php echo htmlentities($profile['bio']) ?><br/>
-					<?php if ($isowner) { ?>
-					<form action="profile.php" method="post">                   
-						<input type="submit" class ="submitButton" value="Edit Profile" name="editprof"/>				  
-					</form> <?php } ?>
-
-				<!-- List student subjects -->
-				<h3> Student Subjects </h3>
-				<?php foreach($student->getSubjects() as $subject) {
-				 echo htmlentities($subject).'<br />';  ?>
-					<form method="post" action="profile.php">
-					<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>">
-					<?php if($isowner) { ?> 
-					<input class = "btn btn-danger btn-xs" type="submit" name="studentDelete" value="Remove Subject" />
-					<?php } ?>
-					</form>
-				<?php } ?>
-
-				<!-- Add Student Subject -->
-				<?php if($isowner) { ?>
-				<form name="myForm" method="post" action="profile.php">
-					<select name="studentSubject">
-						<option value = "Add a Subject"> Add a Subject </option>
-						<?php 
-						$stmt=$mydb->queryNoFetch('SELECT * FROM all_subjects',array());
-						foreach ($stmt as $row): ?>
-							<option value="<?php echo $row['subject'] ?>"><?php echo $row['subject'] ?></option>	
-						<?php endforeach; ?>
-					</select>
-					<input type="submit" class = "btn btn-primary" value="Add a Subject" name="studentAdd"  />
-				</form>
-				<?php } ?>
-
-				<!-- List Tutor Subjects -->
-				<h3> Tutoring Subjects </h3>
-				<?php foreach($tutor->getSubjects() as $subject) {
-					echo htmlentities($subject).'<br />';  ?>
-					<form method="post" action="profile.php">
-						<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>">
-						<?php if($isowner) { ?>  
-						<input class = "btn btn-danger btn-xs" type="submit" name="tutorDelete" value="Remove Subject" />
-						<?php } ?>
-					</form>
-				<?php } ?>
-	
-				<!-- Add Tutor Subject -->
-				<?php if($isowner) { ?> 
-				<form name="myForm" method="post" action="profile.php">
-					<select name="tutorSubject">
-						<option value = "Add a Subject"> Add a Subject </option>
-						<?php 
-						$stmt=$mydb->queryNoFetch('SELECT * FROM all_subjects',array());
-						foreach ($stmt as $row): ?>
-							<option value="<?php echo $row['subject'] ?>"><?php echo $row['subject'] ?></option>	
-						<?php endforeach; ?>
-					</select>
-					<input type="submit" class = "btn btn-primary" value="Add Subject" name="tutorAdd"  />
-				</form>
-				<?php } ?>
-
-				<!-- List Availability -->
-				<h3> Availability </h3>
-				<?php foreach($service->getAvailability() as $day) {
-					echo htmlentities($day).'<br />';  ?>
-					<form method="post" action="profile.php">
-						<input type="hidden" name="deleteAvailable" value="<?php echo htmlentities($day) ?>">
-						<?php if($isowner) { ?>  
-						<input class = "btn btn-danger btn-xs" type="submit" name="delete" value="Remove Day" />
-						<?php } ?>
-					</form>
-				<?php } ?>
-	
-				<!-- Add Availability -->
-				<?php if($isowner) { ?> 
-				<form name="myForm" method="post" action="profile.php">
-					<select name="day">
-						<option value = "Add Availability"> Add Availability </option>
-						<option value="Monday">Monday</option>
-						<option value="Tuesday">Tuesday</option>	
-						<option value="Wednesday">Wednesday</option>	
-						<option value="Thursday">Thursday</option>	
-						<option value="Friday">Friday</option>	
-						<option value="Saturday">Saturday</option>	
-						<option value="Sunday">Sunday</option>		
-					</select>
-					<input type="submit" class = "btn btn-primary" value="Add Availability" name="addAvailability"  />
-				</form>
-				<?php } ?>
-
+					} 
+					else
+					{
+						echo file_get_contents('./resources/html/login_form.html');
+					}?>
+				</div><!--/.nav-collapse -->
 			</div>
+		</div>
+
+		<!-- Begin page content -->
+		<div class="container">
+			<br>
+			<div class="page-header">
+				<h1>Profile</h1>
+			</div>
+			<div id="profileDiv">
+				<?php if (isset($_SESSION['username'])){ 
+				$username=$_SESSION['username']; ?>
+				<?php if(isset($_POST['editprof'])) {
+					$profile=$service->getProfile(); ?>
+				
+					<h1 id="title">Update Your Profile</h1>
+					<?php if (isset($msg)) echo "<p>$msg</p>" ?>
+						<form class="form-horizontal" action="profile.php" method="post">
+							<label>First Name:</label>
+							<input type="text" id="firstname" class = "form-control" name="firstname" value="<?php echo htmlentities($profile['firstname']) ?>"></input><br/>
+
+							<label>Last Name:</label>
+							<input type="text" class = "form-control" id="lastname" name="lastname" value="<?php echo htmlentities($profile['lastname']) ?>"></input><br/>
+
+							<label>*Email</label> 
+							<input type="text" class = "form-control"  id="email" name="email" value="<?php echo htmlentities($profile['email']) ?>"></input><br/>
+
+							<label>Phone Number</label> 
+							<input type="text" class = "form-control"  id="phone" name="phone" value="<?php echo htmlentities($profile['phone']) ?>"></input><br/>
+
+							<label>Bio</label> 
+							<textarea type="text" class = "form-control"  rows="5" id="bio" name="bio" value="<?php echo htmlentities($profile['bio']) ?>"></textarea><br/>
+							
+							<label>Student Price</label> 
+							<div class="input-group">
+								<span class="input-group-addon">$</span>
+								<input type="text" class = "form-control"  id="sprice" name="sprice" value="<?php echo htmlentities($profile['studentprice']) ?>">
+								</input>
+							</div>
+
+							<label>Tutor Price</label>
+							<div class="input-group">
+								<span class="input-group-addon">$</span>
+								<input type="text" class = "form-control"  id="tprice" name="sprice" value="<?php echo htmlentities($profile['tutorprice']) ?>">
+								</input>
+							</div> 
+
+							<p>*Email is required. All other fields are optional.</p>
+							<input  type="hidden" name="prid" value="<?php echo htmlentities($profile['prid']) ?>">
+							<input type="submit" class = "btn btn-primary" value="Update" name="update"/>
+						</form>	
+				<?php } else { 
+					$profile=$service->getProfile();?>
+					<div id="profileInfoArea">
+						First Name: <?php echo htmlentities($profile['firstname']) ?><br/>
+						Last Name: <?php echo htmlentities($profile['lastname']) ?><br/>
+						Email: <?php echo htmlentities($profile['email']) ?><br/>
+						Phone: <?php echo htmlentities($profile['phone']) ?><br/>
+						Bio: <?php echo htmlentities($profile['bio']) ?><br/>
+						<?php if ($isowner) { ?>
+						<form action="profile.php" method="post">                   
+							<input type="submit" class ="submitButton" value="Edit Profile" name="editprof"/>				  
+						</form> <?php } ?>
+
+					<!-- List student subjects -->
+					<h3> Student Subjects </h3>
+					<?php foreach($student->getSubjects() as $subject) {
+					 echo htmlentities($subject).'<br />';  ?>
+						<form method="post" action="profile.php">
+						<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>">
+						<?php if($isowner) { ?> 
+						<input class = "btn btn-danger btn-xs" type="submit" name="studentDelete" value="Remove Subject" />
+						<?php } ?>
+						</form>
+					<?php } ?>
+
+					<!-- Add Student Subject -->
+					<?php if($isowner) { ?>
+					<form name="myForm" method="post" action="profile.php">
+						<select name="studentSubject">
+							<option value = "Add a Subject"> Add a Subject </option>
+							<?php 
+							$stmt=$mydb->queryNoFetch('SELECT * FROM all_subjects',array());
+							foreach ($stmt as $row): ?>
+								<option value="<?php echo $row['subject'] ?>"><?php echo $row['subject'] ?></option>	
+							<?php endforeach; ?>
+						</select>
+						<input type="submit" class = "btn btn-primary" value="Add a Subject" name="studentAdd"  />
+					</form>
+					<?php } ?>
+
+					<!-- List Tutor Subjects -->
+					<h3> Tutoring Subjects </h3>
+					<?php foreach($tutor->getSubjects() as $subject) {
+						echo htmlentities($subject).'<br />';  ?>
+						<form method="post" action="profile.php">
+							<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>">
+							<?php if($isowner) { ?>  
+							<input class = "btn btn-danger btn-xs" type="submit" name="tutorDelete" value="Remove Subject" />
+							<?php } ?>
+						</form>
+					<?php } ?>
+		
+					<!-- Add Tutor Subject -->
+					<?php if($isowner) { ?> 
+					<form name="myForm" method="post" action="profile.php">
+						<select name="tutorSubject">
+							<option value = "Add a Subject"> Add a Subject </option>
+							<?php 
+							$stmt=$mydb->queryNoFetch('SELECT * FROM all_subjects',array());
+							foreach ($stmt as $row): ?>
+								<option value="<?php echo $row['subject'] ?>"><?php echo $row['subject'] ?></option>	
+							<?php endforeach; ?>
+						</select>
+						<input type="submit" class = "btn btn-primary" value="Add Subject" name="tutorAdd"  />
+					</form>
+					<?php } ?>
+
+					<!-- List Availability -->
+					<h3> Availability </h3>
+					<?php foreach($service->getAvailability() as $day) {
+						echo htmlentities($day).'<br />';  ?>
+						<form method="post" action="profile.php">
+							<input type="hidden" name="deleteAvailable" value="<?php echo htmlentities($day) ?>">
+							<?php if($isowner) { ?>  
+							<input class = "btn btn-danger btn-xs" type="submit" name="delete" value="Remove Day" />
+							<?php } ?>
+						</form>
+					<?php } ?>
+		
+					<!-- Add Availability -->
+					<?php if($isowner) { ?> 
+					<form name="myForm" method="post" action="profile.php">
+						<select name="day">
+							<option value = "Add Availability"> Add Availability </option>
+							<option value="Monday">Monday</option>
+							<option value="Tuesday">Tuesday</option>	
+							<option value="Wednesday">Wednesday</option>	
+							<option value="Thursday">Thursday</option>	
+							<option value="Friday">Friday</option>	
+							<option value="Saturday">Saturday</option>	
+							<option value="Sunday">Sunday</option>		
+						</select>
+						<input type="submit" class = "btn btn-primary" value="Add Availability" name="addAvailability"  />
+					</form>
+					<?php } ?>
+
+				</div>
+				<?php } ?>
 			<?php } ?>
-		<?php } ?>
-      </div>
-                </div>
-    </div>
+			</div>
+		</div>
+	</div>
 
-    <div id="footer">
-      <div class="container">
-      </div>
-    </div>
+	<div id="footer">
+		<div class="container">
+		</div>
+	</div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="./resources/javascript/bootstrap.min.js"></script>
-	</body>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="./resources/javascript/bootstrap.min.js"></script>
+</body>
 </html>

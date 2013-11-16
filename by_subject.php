@@ -57,7 +57,7 @@
 					if( isset($_SESSION['username']))
 					{
 						//echo '<ul class="nav navbar-nav navbar-right"><li><a href="./profile.php">' . $_SESSION['username'] . '</a></li></ul>';
-						$temp = file_get_contents('./resources/html/profile_dropdown.html');
+						$temp = file_get_contents('./resources/html/logout_form.html');
 						echo str_replace("username", $_SESSION['username'], $temp );
 					}
 					else

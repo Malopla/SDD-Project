@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 
-<?php /*session_start();
-  
-  // Includes db.php functions and enables connection to the database
-  try {	
-	include './resources/database/db.php';
-  }
-  catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
-  }*/
-  //$_SESSION['username'] = 'bla';
+<?php session_start();
+
 ?>
 
 <html lang="en">
@@ -65,7 +57,7 @@
 					if( isset($_SESSION['username']))
 					{
 						//echo '<ul class="nav navbar-nav navbar-right"><li><a href="./profile.php">' . $_SESSION['username'] . '</a></li></ul>';
-						$temp = file_get_contents('./resources/html/profile_dropdown.html');
+						$temp = file_get_contents('./resources/html/logout_form.html');
 						echo str_replace("username", $_SESSION['username'], $temp );
 					}
 					else
