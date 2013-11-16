@@ -55,6 +55,7 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
+						<li><a href="./profile.php">Profile</a></li>
 						<li><a href="./by_subject.php">By Subject</a></li>
 						<li><a href="./by_user.php">By User</a></li>
 					</ul>
@@ -63,7 +64,9 @@
 					//echo file_get_contents('./resources/html/login_form.html');
 					if( isset($_SESSION['username']))
 					{
-						echo '<ul class="nav navbar-nav navbar-right"><li><a href="./profile.php">' . $_SESSION['username'] . '</a></li></ul>';
+						//echo '<ul class="nav navbar-nav navbar-right"><li><a href="./profile.php">' . $_SESSION['username'] . '</a></li></ul>';
+						$temp = file_get_contents('./resources/html/profile_dropdown.html');
+						echo str_replace("username", $_SESSION['username'], $temp );
 					}
 					else
 					{
