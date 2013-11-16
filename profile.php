@@ -47,7 +47,7 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="./profile.php">Profile</a></li>
+						<li class="active"><a href="./profile.php">Profile</a></li>
 						<li><a href="./by_subject.php">By Subject</a></li>
 						<li><a href="./by_user.php">By User</a></li>
 					</ul>
@@ -65,14 +65,12 @@
 			</div>
 		</div>
 
-      <!-- Begin page content -->
-      <div class="container">
-        <div class="page-header">
-			<!--<h1>Sticky footer with fixed navbar</h1>-->
-		  
-        </div>
-			
-      </div>
+		<!-- Begin page content -->
+		<div class="container">
+			<div class="page-header">
+				<h1>Profile</h1>
+			</div>
+		</div>
     </div>
 
     <div id="footer">

@@ -48,7 +48,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="./profile.php">Profile</a></li>
-						<li><a href="./by_subject.php">By Subject</a></li>
+						<li class="active"><a href="./by_subject.php">By Subject</a></li>
 						<li><a href="./by_user.php">By User</a></li>
 					</ul>
 					<form class="navbar-form navbar-right">
@@ -64,6 +64,15 @@
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
+		<!--</div class="container">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#Profile">Profile</a></li>
+				<li><a href="#Matching">Matching</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</div>-->
 
       <!-- Begin page content -->
       <div class="container">

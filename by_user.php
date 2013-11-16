@@ -49,7 +49,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="./profile.php">Profile</a></li>
 						<li><a href="./by_subject.php">By Subject</a></li>
-						<li><a href="./by_user.php">By User</a></li>
+						<li class="active"><a href="./by_user.php">By User</a></li>
 					</ul>
 					<form class="navbar-form navbar-right">
 						<div class="form-group">
