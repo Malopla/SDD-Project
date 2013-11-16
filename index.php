@@ -9,7 +9,7 @@
   catch (Exception $e) {
     echo "Error: " . $e->getMessage();
   }*/
-  $_SESSION['username'] = 'bla';
+  //$_SESSION['username'] = 'bla';
 ?>
 
 <html lang="en">
@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--    <meta name="description" content="">
     <meta name="author" content="">-->
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+    <link rel="shortcut icon" href="./images/favicon.png">
 
     <title>Online Office Hours</title>
 
@@ -96,8 +96,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>-->
-	<script src="./resources/jquery/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="./resources/javascript/bootstrap.min.js"></script>
   </body>
 </html>

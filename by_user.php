@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--    <meta name="description" content="">
     <meta name="author" content="">-->
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+    <link rel="shortcut icon" href="./images/favicon.png">
 
     <title>Online Office Hours</title>
 
@@ -51,16 +51,20 @@
 						<li><a href="./by_subject.php">By Subject</a></li>
 						<li class="active"><a href="./by_user.php">By User</a></li>
 					</ul>
-					<form class="navbar-form navbar-right">
-						<div class="form-group">
-							<input type="text" placeholder="Email" class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="password" placeholder="Password" class="form-control">
-						</div>
-						<button type="submit" class="btn btn-success">Sign in</button>
-						<a href="">register</a>
-					</form>
+					<!--Login Bar-->
+					<?php
+					//echo file_get_contents('./resources/html/login_form.html');
+					if( isset($_SESSION['username']))
+					{
+						//echo '<ul class="nav navbar-nav navbar-right"><li><a href="./profile.php">' . $_SESSION['username'] . '</a></li></ul>';
+						$temp = file_get_contents('./resources/html/profile_dropdown.html');
+						echo str_replace("username", $_SESSION['username'], $temp );
+					}
+					else
+					{
+						echo file_get_contents('./resources/html/login_form.html');
+					}
+					?>
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
@@ -68,7 +72,7 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-			<!--<h1>Sticky footer with fixed navbar</h1>-->
+			
 		  
         </div>
 			
@@ -84,8 +88,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>-->
-	<script src="./resources/jquery/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="./resources/javascript/bootstrap.min.js"></script>
   </body>
 </html>
