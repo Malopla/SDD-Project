@@ -17,10 +17,14 @@ class Auth{
 			array(':username' => $username, ':pass' => $salted));
 		if ($user = $login_res) {
 			$_SESSION['username'] = $user['username'];
-		   header('Location:location.php');
+		   header('Location:profile.php');
 		}
 	}
-	
+
+	public function isOwner() {
+		return (!isset($_GET['user']) && isset($_SESSION['username'])) || (isset($_GET['user']) && ($_SESSION['username'] == $_GET['user']));
+	}	
+
 	public function logout() {
 		unset($_SESSION['username']);
 		setcookie(session_name(), '', time()-48000);
@@ -30,7 +34,6 @@ class Auth{
 	public function register($username, $password, $email) {	
 		$salt = sha1(uniqid(mt_rand(), true));      
 		$salted = sha1($salt . $_POST['pass']);      
-
 		$this->_db->query('INSERT INTO users (username, password, salt) VALUES (:username, :pass, :salt)', array(':username' => $username, ':pass' => $salted, ':salt' => $salt));
 		$this->_db->query('INSERT INTO profile (username, email) VALUES (:username, :email)', array(':username' => $username, ':email' => $email));
 		$this->_db->query('INSERT INTO students (username, subjectCount) VALUES (:username, :subjectCount)', array(':username' => $username, ':subjectCount' => 0));
@@ -67,3 +70,4 @@ class Auth{
 	}
 }
 ?>
+

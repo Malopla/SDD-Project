@@ -6,13 +6,15 @@
 		include 'db-class.php';
 		include 'auth-class.php';
 		include 'user-class.php';
+		include 'userservice-class.php';
 	}
 	catch (Exception $e) {
 		echo "Error: " . $e->getMessage();
 	}
    $mydb = new Database();
 	$auth = new Auth($mydb);
-
+	$student = new Student($mydb, $_SESSION['username']);
+	$tutor = new Student($mydb, $_SESSION['username']);
 	// Login
 	if (isset($_POST['login']) && $_POST['login'] == 'Login') {
 		$auth->login($_POST['username'], $_POST['pass']);
@@ -30,10 +32,33 @@
 			$auth->register($_POST['username'],$_POST['pass'],$_POST['email']);
 	}
 
-	// Create student and tutor objects
-	$student = new Student($mydb, $_SESSION['username']);
-	$tutor = new Tutor($mydb, $_SESSION['username']);
-    
+	// Create service object
+	if (isset($_GET['user'])) {
+		$service = new UserService($mydb, $_GET['user']);
+	}
+	else {
+		$service = new UserService($mydb, $_SESSION['username']);
+	}
+	
+	// Is the currently logged in user the owner of this profile page
+	$isowner = $auth->isOwner();
+
+	//Add availability
+	if(isset($_POST['addAvailability'])){
+		if ($_POST['day'] == 'Add Availability') {
+			$msg = 'Needs to be an actual day.';
+		}
+		else {
+			$service->addAvailability($_POST['day']);
+			header('Location:location.php');
+		}
+	}
+	
+	// Delete availability
+	if (isset($_POST['delete']) && $_POST['delete'] == 'deleteAvailable') {
+		$service->removeAvailability($_POST['deleteAvailable']);
+	} 
+
 	// Add a student subject
 	if(isset($_POST['studentAdd'])){
 		if ($_POST['studentSubject'] == 'Add a Subject') {
@@ -63,9 +88,7 @@
 		}
 		else{
 			if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-				$sql = 'UPDATE profile SET firstname = :firstname, lastname = :lastname, email = :email, phone = :phone, bio = :bio WHERE prid=:prid';
-				$stmt = $dbconn->prepare($sql);
-				$stmt->execute( array(':firstname' => $_POST['firstname'], ':lastname' => $_POST['lastname'], ':email' => $_POST['email'], ':phone' => $_POST['phone'], ':bio' => $_POST['bio'], ':prid' => $_POST['prid']));
+				$service->updateProfile($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['phone'], $_POST['bio'], $_POST['sprice'], $_POST['tprice']);
 			}
 			else{
 				$msg = "This must be an email.";
@@ -226,39 +249,44 @@
 
 						<label>Bio</label> 
 						<input type="text" class = "create"  id="bio" name="bio" value="<?php echo htmlentities($result['bio']) ?>"></input><br/>
+						
+						<label>Student Price</label> 
+						<input type="text" class = "create"  id="sprice" name="sprice" value="<?php echo htmlentities($result['studentprice']) ?>"></input><br/>
+
+						<label>Tutor Price</label> 
+						<input type="text" class = "create"  id="tprice" name="tprice" value="<?php echo htmlentities($result['tutorprice']) ?>"></input><br/>
 						<p>*Email is required. All other fields are optional.</p>
 						<br/>
 						<input  type="hidden" name="prid" value="<?php echo htmlentities($result['prid']) ?>">
 						<input type="submit" class = "submitButton" id = "create" value="Update" name="update"/>
 					</form>	
 			<?php } else { 
-				$username=$_SESSION['username'];
-				$sql = 'SELECT * FROM profile WHERE username=:username';
-				$stmt = $dbconn->prepare($sql);
-				$stmt->execute(array(':username' => $username));
-				foreach ($stmt as $row) { ?>
+				$profile=$service->getProfile();?>
 				<div id="profileInfoArea">
-					First Name: <?php echo htmlentities($row['firstname']) ?><br/>
-					Last Name: <?php echo htmlentities($row['lastname']) ?><br/>
-					Email: <?php echo htmlentities($row['email']) ?><br/>
-					Phone: <?php echo htmlentities($row['phone']) ?><br/>
-					Bio: <?php echo htmlentities($row['bio']) ?><br/>
+					First Name: <?php echo htmlentities($profile['firstname']) ?><br/>
+					Last Name: <?php echo htmlentities($profile['lastname']) ?><br/>
+					Email: <?php echo htmlentities($profile['email']) ?><br/>
+					Phone: <?php echo htmlentities($profile['phone']) ?><br/>
+					Bio: <?php echo htmlentities($profile['bio']) ?><br/>
+					<?php if ($isowner) { ?>
 					<form action="location.php" method="post">                   
-						<input type="hidden" name="prid" value="<?php echo htmlentities($row['prid'])?>" />
 						<input type="submit" class ="submitButton" value="Edit Profile" name="editprof"/>				  
-					</form>
+					</form> <?php } ?>
 
 				<!-- List student subjects -->
 				<h3> Student Subjects </h3>
 				<?php foreach($student->getSubjects() as $subject) {
 				 echo htmlentities($subject).'<br />';  ?>
 					<form method="post" action="location.php">
-					<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>"> 
+					<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>">
+					<?php if($isowner) { ?> 
 					<input class = "deleteButton" type="submit" name="delete" value="studentDelete" />
+					<?php } ?>
 					</form>
 				<?php } ?>
 
 				<!-- Add Student Subject -->
+				<?php if($isowner) { ?>
 				<form name="myForm" method="post" action="location.php">
 					<select name="studentSubject">
 						<option value = "Add a Subject"> Add a Subject </option>
@@ -270,18 +298,22 @@
 					</select>
 					<input type="submit" class = "deleteButton" value="Add Subject" name="studentAdd"  />
 				</form>
+				<?php } ?>
 
 				<!-- List Tutor Subjects -->
 				<h3> Tutoring Subjects </h3>
 				<?php foreach($tutor->getSubjects() as $subject) {
 					echo htmlentities($subject).'<br />';  ?>
 					<form method="post" action="location.php">
-						<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>"> 
+						<input type="hidden" name="deleteSubject" value="<?php echo htmlentities($subject) ?>">
+						<?php if($isowner) { ?>  
 						<input class = "deleteButton" type="submit" name="delete" value="tutorDelete" />
+						<?php } ?>
 					</form>
 				<?php } ?>
-
+	
 				<!-- Add Tutor Subject -->
+				<?php if($isowner) { ?> 
 				<form name="myForm" method="post" action="location.php">
 					<select name="tutorSubject">
 						<option value = "Add a Subject"> Add a Subject </option>
@@ -293,8 +325,38 @@
 					</select>
 					<input type="submit" class = "deleteButton" value="Add Subject" name="tutorAdd"  />
 				</form>
+				<?php } ?>
+
+				<!-- List Availability -->
+				<h3> Availability </h3>
+				<?php foreach($service->getAvailability() as $day) {
+					echo htmlentities($day).'<br />';  ?>
+					<form method="post" action="location.php">
+						<input type="hidden" name="deleteAvailable" value="<?php echo htmlentities($day) ?>">
+						<?php if($isowner) { ?>  
+						<input class = "deleteButton" type="submit" name="delete" value="deleteAvailable" />
+						<?php } ?>
+					</form>
+				<?php } ?>
+	
+				<!-- Add Availability -->
+				<?php if($isowner) { ?> 
+				<form name="myForm" method="post" action="location.php">
+					<select name="day">
+						<option value = "Add a Subject"> Add Availability </option>
+						<option value="Monday">Monday</option>
+						<option value="Tuesday">Tuesday</option>	
+						<option value="Wednesday">Wednesday</option>	
+						<option value="Thursday">Thursday</option>	
+						<option value="Friday">Friday</option>	
+						<option value="Saturday">Saturday</option>	
+						<option value="Sunday">Sunday</option>		
+					</select>
+					<input type="submit" class = "deleteButton" value="Add Availability" name="addAvailability"  />
+				</form>
+				<?php } ?>
+
 			</div>
-			<?php } ?>
 			<?php } ?>
 		<?php } ?>
       </div>

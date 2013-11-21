@@ -34,7 +34,16 @@ class UserService {
 
 	public function removeAvailability($day) {
 		$this->_db->query('DELETE FROM availability WHERE username=:username AND day=:day', array(':username' => $this->username, ':day' => $day));
-	} 
+	}
+	
+	public function addRating($rating) {
+		$stmt=$this->_db->query('SELECT * FROM profile WHERE username=:username', array(':username' => $this->username));
+		$currRating=$stmt['rating'];
+		$numRatings=$stmt['numratings'];
+		$newRating=$currRating*($numRatings/($numRatings+1))+$rating*(1/($numRatings+1));
+		$this->_db->query('UPDATE profile SET rating=:rating, numratings=:numratings WHERE username=:username', 
+			array(':rating' => $newRating, ':numratings' => $numRatings+1, ':username' => $this->username));
+	}
 
 	
 	
