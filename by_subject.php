@@ -4,11 +4,11 @@
           
   // Includes db.php functions and enables connection to the database
   try {	
-	include 'resources/database/db.php';
-	include 'db-class.php';
-	include 'auth-class.php';
-	include 'user-class.php';
-	include 'userservice-class.php';
+	require_once('resources/database/db.php');
+	require_once('db-class.php');
+	require_once('auth-class.php');
+	require_once('user-class.php');
+	require_once('userservice-class.php');
   }
   catch (Exception $e) {
     echo "Error: " . $e->getMessage();
