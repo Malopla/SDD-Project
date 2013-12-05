@@ -1,6 +1,6 @@
 SDD-Project
 ===========
-### Welcome to the Online Office Hours GitHub Page!
+Welcome to the Online Office Hours GitHub Page!
 
 This is a project for a course at Rensselaer Polytechnic Institute, Software Design and Documentation (SDD)
 ==========
